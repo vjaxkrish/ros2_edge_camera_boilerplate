@@ -18,4 +18,33 @@ A lightweight, well-documented ROS2 workspace template designed for quick and re
    ```bash
    mkdir -p ~/ros2_ws/src
    cd ~/ros2_ws/src
-   git clone [https://github.com/YourUsername/ros2_edge_camera_boilerplate.git](https://github.com/YourUsername/ros2_edge_camera_boilerplate.git)
+   git clone [https://github.com/vjaxkrish/ros2_edge_camera_boilerplate.git](https://github.com/vjaxkrish/ros2_edge_camera_boilerplate.git)
+
+ 2. Build the package:
+   ```bash
+   cd ~/ros2_ws
+   colcon build --packages-select edge_camera_pkg
+   source install/setup.bash
+```
+
+   ## Usage
+   
+   You can run the node using the standard `ros2 run` command, or use the included launch file for an easier setup.
+   
+   **Using the Launch File (Recommended):**
+   
+   Run with a standard USB Camera (Default):
+   ```bash
+   ros2 launch edge_camera_pkg camera.launch.py
+```
+
+## Run with an Nvidia Jetson CSI Camera:
+```bash
+ros2 launch edge_camera_pkg camera.launch.py use_gst:='True' camera_id:='0' fps:='30'
+```
+## Viewing the feed ::
+```bash
+ros2 run rqt_image_view rqt_image_view
+```
+
+      
